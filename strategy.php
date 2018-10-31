@@ -147,7 +147,9 @@ $problem = one_problem_array(1);
 		</div>
 		<!--nav-buttons-->
 		<div id="response-id" class="hidden"></div>
-		<div id="problem-id" class="hidden"></div>
+		<div id="problem-id" class="hidden"><?php echo $problem["brain_id"]; ?></div>
+		<div id="user-id" class="hidden">1</div>
+
 	</div>
 	<!--container-->
 	<?php include_once "../../a/footer.php"?>
