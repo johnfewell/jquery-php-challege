@@ -14,6 +14,7 @@ $problem = one_problem_array(1);
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="inc/general.js"></script>
 	<script src="inc/jquery.serialize-object.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/timer.jquery/0.7.0/timer.jquery.js"></script>
 
 	<!-- <link rel="stylesheet" type="text/css" href="/pm/pm.css">
     <script src="/js/bootstrap.js"></script>
