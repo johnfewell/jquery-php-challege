@@ -59,3 +59,22 @@ function array_category($catalog,$category) {
     asort($output);
     return array_keys($output);
 }
+
+function add_response($problemId, $answer, $time, $userId, $date){
+    include ("connection.php");
+    $sql = 'INSERT INTO brain_responses(brain_id, answer, time, id, date) VALUESa(?, ?, ?, ?, ?)';
+
+    try {
+        $results = $db->prepare($sql);
+        $results->bindValue(1, $problemId, PDO::PARAM_INT);
+        $results->bindValue(2, $answer, PDO::PARAM_LONGTEXT);
+        $results->bindValue(3, $time, PDO::PARAM_INT);
+        $results->bindValue(4, $userId, PDO::PARAM_INT);
+        $results->bindValue(5, $date, PDO::PARAM_DATE);
+        $results->execute(); 
+    } catch (Exception $e) {
+        echo "Error!:" . $e->getMessage() . "<br/>";
+        return false;
+    }
+    return true;
+}

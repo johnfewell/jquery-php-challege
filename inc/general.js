@@ -5,11 +5,19 @@ $(function () {
 
     $("#submitAnswers").click(function () {
         // console.log('click!')
-        const form = $("form").serializeJSON()
+        const answers = $("form").serializeJSON()
         const timer = $('#timer').html()
-        
-        console.log(timer);
-
+        const date = new Date();
+        const userId = $('#user-id').html()
+        const problemId = $('#problem-id').html()
+        $.ajax({
+            url: "strategy.php",
+            type: 'POST',       // You are sending classic $_POST vars.
+            data: { $problemId: problemId, $answers: answers, $time: timer, $userId: userId, $date: date },
+            dataType: 'JSON',  // You are receiving JSON as the response
+            success: function(result) {
+                console.log(result);
+            }})
     })
 
     // The template for the new answer input
@@ -66,6 +74,6 @@ $(function () {
         });
     });
     $("#timer").timer({
-     
+        format: '%S'
     })
 });

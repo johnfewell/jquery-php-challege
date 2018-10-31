@@ -2,6 +2,19 @@
 // include_once "../../startsession.php";
 include "inc/functions.php";
 $problem = one_problem_array(1);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$problemId = filter_input(INPUT_POST, '$problemId', FILTER_SANITIZE_INTEGER);
+	$answer = filter_input(INPUT_POST, '$answer', FILTER_SANITIZE_STRING);
+	$time = filter_input(INPUT_POST, '$time', FILTER_SANITIZE_INTEGER);
+	$userId = filter_input(INPUT_POST, '$userId', FILTER_SANITIZE_INTEGER);
+	$date = filter_input(INPUT_POST, '$date', FILTER_SANITIZE_DATE);
+	echo "problem id = $problemId </br>";
+	echo "answer id = $answer </br>";
+	echo "time id = $time </br>";
+	echo "userId id = $userId </br>";
+	echo "date id = $date </br>";}
+
 ?>
 <!DOCTYPE HTML>
 <html>
