@@ -13,6 +13,8 @@ $problem = one_problem_array(1);
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="inc/general.js"></script>
+	<script src="inc/jquery.serialize-object.min.js"></script>
+
 	<!-- <link rel="stylesheet" type="text/css" href="/pm/pm.css">
     <script src="/js/bootstrap.js"></script>
     <script src="/pm/drills/js/questionProcess-v2.js"></script>
