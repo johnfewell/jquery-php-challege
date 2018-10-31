@@ -1,25 +1,32 @@
-$(document).ready(function () {
-
+$(function () {
     // The template for the new answer input
     const newAnswer = $(`<div class="answer-template">
-                            <input type="text" name="answer" value="Enter your insight/step/answer here...">
+                            <input type="text" name="answer[0]" value="Enter your insight/step/answer here...">
                         </div>`)
 
     // Find the initial .answer-holder div that's rendered when the page first loads
     const answerHolder = $('.answer-holder');
 
+    let counter = 0;
+   
     // Add the event handler for the for Add answer button after the initial page load
     $(".answer-add").click((event) => {
+        counter++;
+        answerClone = newAnswer.clone()
+        answerClone.find(':text').attr('name', 'answer[' + counter + ']');
         event.preventDefault();
         //Clone the answer template and append it to the .answer-holder container
-        newAnswer.clone().appendTo(answerHolder);
+        answerClone.clone().appendTo(answerHolder);
     });
 
     // Create a clone of the whole reponse template
     const responseTemplate = $(".response-template").clone();
 
+    var categoryCounter = 0;
+    
     // Add an event handler for the new category add
     $("#category-add").click(function () {
+        categoryCounter++;
         //Create a fresh clone of the reponse template
         const responseClone = responseTemplate.clone();
         // Append the clone to the DOM
@@ -36,6 +43,4 @@ $(document).ready(function () {
             newAnswer.clone().appendTo(answerHolder);
         });
     });
-
-
 });

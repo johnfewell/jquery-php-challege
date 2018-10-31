@@ -11,11 +11,10 @@ $problem = one_problem_array(1);
 	<meta name="description" content="tbd" />
 	<link rel="stylesheet" type="text/css" href="css/main.css?v=3">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="inc/general.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="/pm/pm.css">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script src="/js/bootstrap.js"></script>
-   
     <script src="/pm/drills/js/questionProcess-v2.js"></script>
     <script src="/pm/common-v2.js"></script>
     <script src="/pm/drills/js/formatting-v2.js"></script>	
@@ -75,9 +74,9 @@ $problem = one_problem_array(1);
 							<div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
 								<div class="response-template">
 									<form>
-										<input type="text" name="category" value="Category">
+										<input type="text" name="category[0]" value="Category">
 										<div class="answer-template">
-											<input type="text" name="answer" value="Enter your insight/step/answer here...">
+											<input type="text" name="answer[0]" value="Enter your insight/step/answer here...">
 										</div>
 										<div class="answer-holder">
 										</div>
@@ -130,12 +129,12 @@ $problem = one_problem_array(1);
 		<div class="row">
 			<div id="nav-buttons" class="col-sm-10 col-sm-offset-1">
 				<div class="row">
-					<div class="col-sm-12" id="next-submit"><a role="button" class="btn btn-success pull-right" id="submitAnswers">Submit
-							answer</a></div>
+					<div class="col-sm-12" id="next-submit"><button class="btn btn-success pull-right" id="submitAnswers">Submit
+							answer</button></div>
 				</div>
 				<div class="space10"></div>
 				<div class="row">
-					<div class="col-sm-12"><a role="button" class="btn btn-default pull-right skip" href="strategy.php">Skip problem</a></div>
+					<div class="col-sm-12"><button class="btn btn-default pull-right skip" href="strategy.php">Skip problem</button></div>
 				</div>
 				<div class="space10"></div>
 				<div class="row">
