@@ -74,7 +74,7 @@ $problem = one_problem_array(1);
 							<div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
 								<div class="response-template">
 									<form>
-										<input type="text" name="category[0]" value="Category">
+										<input type="text" name="category[0]" class="category" value="Category">
 										<div class="answer-template">
 											<input type="text" name="answer[0]" value="Enter your insight/step/answer here...">
 										</div>
