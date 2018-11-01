@@ -2,11 +2,13 @@ $(function () {
     $("#submitAnswers").click(function () {
         const answers = $("form").serializeJSON()
         let timer = $('#timer').html()
+        // convert timer from string to seconds only integer
         timer = hmsToSecondsOnly(timer)
+        // convert JS date to MySQL datestamp
         const date = new Date().toISOString().slice(0, 19).replace('T', ' ')
         const userId = $('#user-id').html()
         const problemId = $('#problem-id').html()
-        // Send the post request back to strategy via ajax
+        // Send the post request to the strategy page via ajax
         $.ajax({
             url: "strategy.php",
             type: 'POST', // You are sending classic $_POST vars.
@@ -19,11 +21,10 @@ $(function () {
             },
             dataType: 'JSON', // You are receiving JSON as the response
             success: function (result) {
-                console.log(result);
-            }
-        }).done(function() {
-            alert( "second success" );
-          })
+                console.log('we got there!')
+                const testtemp = $(`<?php echo $problem["category"]; ?> TEST`)
+                testtemp.clone().appendTo('#answer-collection-1');            }
+        })
     })
 
     // The template for the new answer input
@@ -80,7 +81,7 @@ $(function () {
         });
     });
 
-    // Fetch the time from the timer id
+    // Add the time to the timer id
     $("#timer").timer({
         format: '%M:%S'
     })
