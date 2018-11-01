@@ -4,6 +4,7 @@ include "inc/functions.php";
 $problem = one_problem_array(1);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	echo var_dump($_POST);
 	$problemId = filter_input(INPUT_POST, '$problemId', FILTER_SANITIZE_INTEGER);
 	$answer = filter_input(INPUT_POST, '$answer', FILTER_SANITIZE_STRING);
 	$time = filter_input(INPUT_POST, '$time', FILTER_SANITIZE_INTEGER);

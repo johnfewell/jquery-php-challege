@@ -6,18 +6,27 @@ $(function () {
     $("#submitAnswers").click(function () {
         // console.log('click!')
         const answers = $("form").serializeJSON()
-        const timer = $('#timer').html()
+        let timer = $('#timer').html()
+        timer = hmsToSecondsOnly(timer)
         const date = new Date();
         const userId = $('#user-id').html()
         const problemId = $('#problem-id').html()
+        // Send the post request back to strategy via ajax
         $.ajax({
             url: "strategy.php",
-            type: 'POST',       // You are sending classic $_POST vars.
-            data: { $problemId: problemId, $answers: answers, $time: timer, $userId: userId, $date: date },
-            dataType: 'JSON',  // You are receiving JSON as the response
-            success: function(result) {
+            type: 'POST', // You are sending classic $_POST vars.
+            data: {
+                $problemId: problemId,
+                $answers: answers,
+                $time: timer,
+                $userId: userId,
+                $date: date
+            },
+            dataType: 'JSON', // You are receiving JSON as the response
+            success: function (result) {
                 console.log(result);
-            }})
+            }
+        })
     })
 
     // The template for the new answer input
@@ -73,7 +82,23 @@ $(function () {
             event.preventDefault();
         });
     });
+
+    // Fetch the time from the timer id
     $("#timer").timer({
-        format: '%S'
+        format: '%M:%S'
     })
+
+    // Convert the string to integer
+    function hmsToSecondsOnly(str) {
+        var p = str.split(':'),
+            s = 0,
+            m = 1;
+
+        while (p.length > 0) {
+            s += m * parseInt(p.pop(), 10);
+            m *= 60;
+        }
+
+        return s;
+    }
 });
