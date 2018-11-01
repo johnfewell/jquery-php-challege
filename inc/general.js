@@ -1,14 +1,9 @@
 $(function () {
-    // $.extend(FormSerializer.patterns, {
-    //     validate: /^[a-z][a-z0-9_]*(?:\.[a-z0-9_]+)*(?:\[\])?$/i
-    //   });
-
     $("#submitAnswers").click(function () {
-        // console.log('click!')
         const answers = $("form").serializeJSON()
         let timer = $('#timer').html()
         timer = hmsToSecondsOnly(timer)
-        const date = new Date();
+        const date = new Date().toISOString().slice(0, 19).replace('T', ' ')
         const userId = $('#user-id').html()
         const problemId = $('#problem-id').html()
         // Send the post request back to strategy via ajax
@@ -26,7 +21,9 @@ $(function () {
             success: function (result) {
                 console.log(result);
             }
-        })
+        }).done(function() {
+            alert( "second success" );
+          })
     })
 
     // The template for the new answer input

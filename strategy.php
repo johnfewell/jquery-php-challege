@@ -4,18 +4,18 @@ include "inc/functions.php";
 $problem = one_problem_array(1);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	echo var_dump($_POST);
-	$problemId = filter_input(INPUT_POST, '$problemId', FILTER_SANITIZE_INTEGER);
-	$answer = filter_input(INPUT_POST, '$answer', FILTER_SANITIZE_STRING);
-	$time = filter_input(INPUT_POST, '$time', FILTER_SANITIZE_INTEGER);
-	$userId = filter_input(INPUT_POST, '$userId', FILTER_SANITIZE_INTEGER);
-	$date = filter_input(INPUT_POST, '$date', FILTER_SANITIZE_DATE);
-	echo "problem id = $problemId </br>";
-	echo "answer id = $answer </br>";
-	echo "time id = $time </br>";
-	echo "userId id = $userId </br>";
-	echo "date id = $date </br>";}
-
+	$problemId = $_POST['$problemId'];
+	$answers = $_POST['$answers'];
+	$time = $_POST['$time'];
+	$userId = $_POST['$userId'];
+	$date = $_POST['$date'];
+	if (add_response($problemId, $answers, $time, $userId, $date)) {
+		header('Location: strategy.php');
+		exit;
+	} else {
+		$error_message = 'Could not add response';
+	};
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -162,7 +162,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		</div>
 		<!--nav-buttons-->
 		<div id="response-id" class="hidden"></div>
-		<div id="problem-id" class="hidden"><?php echo $problem["brain_id"]; ?></div>
+		<div id="problem-id" class="hidden">
+			<?php echo $problem["brain_id"]; ?>
+		</div>
 		<div id="user-id" class="hidden">1</div>
 
 	</div>
