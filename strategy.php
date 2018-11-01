@@ -118,14 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<!--Problem assets-->
 			<div class="row prob-text">
 				<div class="col-sm-10 col-sm-offset-1" id="problem-assets-1">
-					Some test text
 				</div>
 			</div>
 
 			<!--Answer collection-->
 			<div class="row" id="answer-collection-1">
 				<!--displays-->
-				Some test text
 			</div>
 			<!--mock displays-->
 
@@ -134,7 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			<div class="row">
 				<div class="col-sm-10 col-sm-offset-1 prob-text" id="followup-container">
-					Some test text
 				</div>
 				<!--col-->
 			</div>
