@@ -1,6 +1,7 @@
 <?php
 include "inc/functions.php";
 $problem = one_problem_array(1);
+$answers = one_problem_answers_array(1);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$problemId = $_POST['$problemId'];
@@ -121,10 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</div>
 				<!--col-->
 			</div>
-			<!--followup container-->
 
-
-			<!--problems-container-->
 
 			<div class="row">
 				<div id="nav-buttons" class="col-sm-10 col-sm-offset-1">
@@ -149,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<?php echo $problem["brain_id"]; ?>
 			</div>
 			<div id="user-id" class="hidden">1</div>
+			<div id="system-answers" class="hidden"><?php echo $answers["answer"]; ?></div>
 
 		</div>
 		<!--container-->

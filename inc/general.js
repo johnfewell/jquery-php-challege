@@ -35,8 +35,24 @@ $(function () {
             $('.main-area').append(userResponseTemplate);
             $('#response-timer').append(timer.trim());
             buildRepsonseTemplate(answers)
+            $('.main-area').append(systemAnswersTemplate);
+            const systemAnswers = $('#system-answers').html()
+            buildAnswerTemplate(systemAnswers);
         } else {
             console.log('Sumbission to database failier');
+        }
+    }
+
+    function buildAnswerTemplate(answers) {
+        const answersJSON = JSON.parse(answers)
+        for (const {
+                categoryName,
+                answers: answersList
+            } of Object.values(answersJSON)) {
+                $('#suggested-answer-table').append($(`<tr><th scope="col">${categoryName}</th></tr>`));
+            for (const answer of answersList) {
+                $('#suggested-answer-table').append($(`<tr><td>${answer}</td></tr>`));
+            }
         }
     }
 
@@ -66,6 +82,30 @@ $(function () {
                     <div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
                         <div class="response-template">
                         <table class="table" id="response-table">
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+    </table>`)
+
+
+    const systemAnswersTemplate = $(`
+    <table class="table">
+        <thead class="suggested-answer-heading">
+            <tr>
+                <th>Rocketblocks suggested answer(s)</th>
+            </tr>
+        </thead>
+        <tr>
+            <td class="suggested-answer">
+                <div class="row prob-text">
+                    <div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
+                        <div class="response-template">
+                        <table class="table" id="suggested-answer-table">
                         </div>
                     </div>
                     <div class="row">
