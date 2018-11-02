@@ -32,14 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<script src="inc/general.js"></script>
 	<script src="inc/jquery.serialize-object.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timer.jquery/0.7.0/timer.jquery.js"></script>
-
-	<!-- <link rel="stylesheet" type="text/css" href="/pm/pm.css">
-    <script src="/js/bootstrap.js"></script>
-    <script src="/pm/drills/js/questionProcess-v2.js"></script>
-    <script src="/pm/common-v2.js"></script>
-    <script src="/pm/drills/js/formatting-v2.js"></script>	
-	 -->
-
 </head>
 
 <body>
