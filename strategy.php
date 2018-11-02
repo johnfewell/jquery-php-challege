@@ -9,10 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$time = $_POST['$time'];
 	$userId = $_POST['$userId'];
 	$date = $_POST['$date'];
+	header('Content-Type: application/json');
+
 	if (add_response($problemId, $answers, $time, $userId, $date)) {
-		header('Location: strategy.php');
+		// header('Location: strategy.php');
+		http_response_code(200);
+		echo "{\"response\": \"success\"}";
 		exit;
 	} else {
+		echo "{\"response\": \"failure\"}";
 		$error_message = 'Could not add response';
 	};
 }

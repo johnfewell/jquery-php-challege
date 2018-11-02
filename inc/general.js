@@ -11,7 +11,7 @@ $(function () {
         // Send the post request to the strategy page via ajax
         $.ajax({
             url: "strategy.php",
-            type: 'POST', // You are sending classic $_POST vars.
+            method: 'POST', // You are sending classic $_POST vars.
             data: {
                 $problemId: problemId,
                 $answers: answers,
@@ -19,13 +19,23 @@ $(function () {
                 $userId: userId,
                 $date: date
             },
-            dataType: 'JSON', // You are receiving JSON as the response
-            success: function (result) {
-                console.log('we got there!')
-                const testtemp = $(`<?php echo $problem["category"]; ?> TEST`)
-                testtemp.clone().appendTo('#answer-collection-1');            }
-        })
+            dataType: 'json',
+            success: (result) => {
+                answerSuccess(result, problemId);
+            }
+        });
     })
+
+    function answerSuccess(result, problemId) {
+        if (result.response === 'success') {
+            console.log('we got there!');
+            $('#answer-collection-1').append($(`<h1>${problemId}</h1>`));
+            // const testtemp = $(`<?php echo $problem["category"]; ?> TEST`)
+            // testtemp.clone().appendTo('#answer-collection-1');                                
+        } else {
+            console.log('i fucked up');
+        }
+    }
 
     // The template for the new answer input
     const newAnswer = $(`<div class="answer-template">
