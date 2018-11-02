@@ -49,7 +49,7 @@ $(function () {
     <table class="table">
         <thead class="user-answer-heading">
             <tr>
-                <th>Your response (Time taken: ${timer})</th>
+                <th>Your response (Time taken: <span id="response-timer"></span> )</th>
             </tr>
         </thead>
         <tr>
@@ -73,8 +73,12 @@ $(function () {
     function answerSuccess(result, problemId, timer, answers ) {
         if (result.response === 'success') {
             console.log('we got there!');
+            $( ".table" ).remove();
+            $('#timer').remove()
+            $('#next-submit').remove()
+            $('.main-area').append(userResponseTemplate);
+            $('#response-timer').append(timer.trim());
             buildRepsonseTemplate(answers)
-            // $('#answer-collection-1').append($(`<h1>${problemId}</h1>`));                           
         } else {
             console.log('i fucked up');
         }

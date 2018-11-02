@@ -82,6 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<!--problem title, category, prompt-->
 
 			<!--Problem navigator-->
+			<div class="main-area">
+			</div>
 			<table class="table">
 				<thead class="user-answer-heading">
 					<tr>
@@ -112,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</tr>
 				<tr>
 			</table>
+
 			<div class="row prob-text">
 				<div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
 
@@ -125,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</div>
 
 			<!--Answer collection-->
-		
+
 			<!--mock displays-->
 
 			<div class="space25"></div>
@@ -138,36 +141,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</div>
 			<!--followup container-->
 
-		</div>
-		<!--problems-container-->
 
-		<div class="row">
-			<div id="nav-buttons" class="col-sm-10 col-sm-offset-1">
-				<div class="row">
-					<div class="col-sm-12" id="next-submit"><button class="btn btn-success pull-right" id="submitAnswers">Submit
-							answer</button></div>
+			<!--problems-container-->
+
+			<div class="row">
+				<div id="nav-buttons" class="col-sm-10 col-sm-offset-1">
+					<div class="row">
+						<div class="col-sm-12" id="next-submit"><button class="btn btn-success pull-right" id="submitAnswers">Submit
+								answer</button></div>
+					</div>
+					<div class="space10"></div>
+					<div class="row">
+						<div class="col-sm-12"><button class="btn btn-default pull-right skip" href="strategy.php">Skip problem</button></div>
+					</div>
+					<div class="space10"></div>
+					<div class="row">
+						<div class="col-sm-12"><a class="pull-right" href="/pm/main.php"><small>Exit module</small></a></div>
+					</div>
 				</div>
-				<div class="space10"></div>
-				<div class="row">
-					<div class="col-sm-12"><button class="btn btn-default pull-right skip" href="strategy.php">Skip problem</button></div>
-				</div>
-				<div class="space10"></div>
-				<div class="row">
-					<div class="col-sm-12"><a class="pull-right" href="/pm/main.php"><small>Exit module</small></a></div>
-				</div>
+				<!--col-->
 			</div>
-			<!--col-->
-		</div>
-		<!--nav-buttons-->
-		<div id="response-id" class="hidden"></div>
-		<div id="problem-id" class="hidden">
-			<?php echo $problem["brain_id"]; ?>
-		</div>
-		<div id="user-id" class="hidden">1</div>
+			<!--nav-buttons-->
+			<div id="response-id" class="hidden"></div>
+			<div id="problem-id" class="hidden">
+				<?php echo $problem["brain_id"]; ?>
+			</div>
+			<div id="user-id" class="hidden">1</div>
 
-	</div>
-	<!--container-->
-	<?php include_once "../../a/footer.php"?>
+		</div>
+		<!--container-->
+		<?php include_once "../../a/footer.php"?>
 </body>
 
 </html>
