@@ -77,59 +77,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 				</div>
-				<!--column prompt-->
 			</div>
-			<!--problem title, category, prompt-->
 
 			<!--Problem navigator-->
-			<div class="main-area">
-			</div>
-			<table class="table">
-				<thead class="user-answer-heading">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="main-area">
+				</div>
+				<table class="table">
+					<thead class="user-answer-heading">
+						<tr>
+							<th>Enter Answers</th>
+						</tr>
+					</thead>
 					<tr>
-						<th>Enter Answers</th>
-					</tr>
-				</thead>
-				<tr>
-					<td class="user-answer">
-						<div class="row prob-text">
-							<div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
-								<div class="response-template">
-									<form>
-										<input type="text" name="responseGroup0[categoryName]" class="category" placeholder="Category">
-										<div class="answer-template">
-											<input type="text" name="responseGroup0[answers][0]" class="answer" placeholder="Enter your insight/step/answer here...">
-										</div>
-										<div class="answer-holder">
-										</div>
-										<div class="col-sm-12"><button class="answer-add">add answer</button></div>
-									</form>
+						<td class="user-answer">
+
+
+
+
+
+							<div class="input-group mb-3">
+								
+								<div id="problem-navigator">
+									<div class="response-template">
+										<form>
+											<input type="text" name="responseGroup0[categoryName]" class="category form-control" placeholder="Category">
+											<div class="answer-template">
+												<input type="text" name="responseGroup0[answers][0]" class="answer form-control" placeholder="Enter your insight/step/answer here...">
+											</div>
+											<div class="answer-holder">
+											</div>
+											<div class="col-sm-12"><button class="answer-add btn btn-default pull-left skip">add answer</button></div>
+										</form>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12"><button class="btn btn-default pull-left skip" id="category-add">add category</button></div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-sm-12"><button class="btn btn-default pull-left skip" id="category-add">add</button></div>
-							</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-			</table>
-
-			<div class="row prob-text">
-				<div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
-
-				</div>
+						</td>
+					</tr>
+					<tr>
+				</table>
 			</div>
-
-			<!--Problem assets-->
-			<div class="row prob-text">
-				<div class="col-sm-10 col-sm-offset-1" id="problem-assets-1">
-				</div>
-			</div>
-
-			<!--Answer collection-->
-
-			<!--mock displays-->
 
 			<div class="space25"></div>
 			<!--space after mock-->
@@ -170,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		</div>
 		<!--container-->
-		<?php include_once "../../a/footer.php"?>
 </body>
 
 </html>

@@ -26,25 +26,33 @@ $(function () {
         });
     })
 
-//    let answers = {
-//     "responseGroup0":
-//         {"categoryName":"Pre ordering",
-//         "answers":["Answer 1","Answer 2"]},
-//     "responseGroup1":
-//         {"categoryName":"Post ordering","answers":["Answer 1","Answer 2","Answer 3"]},
-//     "responseGroup2":
-//         {"categoryName":"Returning","answers":["BLAH","Answer Blah"]}
-//     }
+    function answerSuccess(result, problemId, timer, answers) {
+        if (result.response === 'success') {
+            console.log('we got there!');
+            $(".table").remove();
+            $('#timer').remove()
+            $('#next-submit').remove()
+            $('.main-area').append(userResponseTemplate);
+            $('#response-timer').append(timer.trim());
+            buildRepsonseTemplate(answers)
+        } else {
+            console.log('Sumbission to database failier');
+        }
+    }
 
-    function buildRepsonseTemplate (answers) {
+    function buildRepsonseTemplate(answers) {
         const answersJSON = JSON.parse(answers)
-        for (const {categoryName, answers: answersList} of Object.values(answersJSON)) {
-            $('#answer-collection-1').append($(`<h1>${categoryName}</h1>`));
+        for (const {
+                categoryName,
+                answers: answersList
+            } of Object.values(answersJSON)) {
+                $('#response-table').append($(`<tr><th scope="col">${categoryName}</th></tr>`));
             for (const answer of answersList) {
-                $('#answer-collection-1').append($(`<h5>${answer}</h5>`));
+                $('#response-table').append($(`<tr><td>${answer}</td></tr>`));
             }
         }
     }
+
     const userResponseTemplate = $(`
     <table class="table">
         <thead class="user-answer-heading">
@@ -57,9 +65,7 @@ $(function () {
                 <div class="row prob-text">
                     <div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
                         <div class="response-template">
-                           <div class="row" id="answer-collection-1">
-                       
-                          </div>
+                        <table class="table" id="response-table">
                         </div>
                     </div>
                     <div class="row">
@@ -70,23 +76,9 @@ $(function () {
         <tr>
     </table>`)
 
-    function answerSuccess(result, problemId, timer, answers ) {
-        if (result.response === 'success') {
-            console.log('we got there!');
-            $( ".table" ).remove();
-            $('#timer').remove()
-            $('#next-submit').remove()
-            $('.main-area').append(userResponseTemplate);
-            $('#response-timer').append(timer.trim());
-            buildRepsonseTemplate(answers)
-        } else {
-            console.log('i fucked up');
-        }
-    }
-
     // The template for the new answer input
     const newAnswer = $(`<div class="answer-template">
-                            <input type="text" name="responseGroup0[answers][0]" placeholder="Enter your insight/step/answer here...">
+                            <input type="text" class="form-control" name="responseGroup0[answers][0]" placeholder="Enter your insight/step/answer here...">
                         </div>`)
 
     // Find the initial .answer-holder div that's rendered when the page first loads
