@@ -1,5 +1,4 @@
 <?php
-// include_once "../../startsession.php";
 include "inc/functions.php";
 $problem = one_problem_array(1);
 
@@ -12,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	header('Content-Type: application/json');
 
 	if (add_response($problemId, $answers, $time, $userId, $date)) {
-		// header('Location: strategy.php');
 		http_response_code(200);
 		echo "{\"response\": \"success\"}";
 		exit;
@@ -127,9 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</div>
 
 			<!--Answer collection-->
-			<div class="row" id="answer-collection-1">
-				<!--displays-->
-			</div>
+		
 			<!--mock displays-->
 
 			<div class="space25"></div>

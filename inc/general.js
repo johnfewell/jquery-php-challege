@@ -3,7 +3,7 @@ $(function () {
         const answers = $("form").serializeJSON()
         let timer = $('#timer').html()
         // convert timer from string to seconds only integer
-        timer = hmsToSecondsOnly(timer)
+        parsedTimer = hmsToSecondsOnly(timer)
         // convert JS date to MySQL datestamp
         const date = new Date().toISOString().slice(0, 19).replace('T', ' ')
         const userId = $('#user-id').html()
@@ -15,23 +15,66 @@ $(function () {
             data: {
                 $problemId: problemId,
                 $answers: answers,
-                $time: timer,
+                $time: parsedTimer,
                 $userId: userId,
                 $date: date
             },
             dataType: 'json',
             success: (result) => {
-                answerSuccess(result, problemId);
+                answerSuccess(result, problemId, timer, answers);
             }
         });
     })
 
-    function answerSuccess(result, problemId) {
+//    let answers = {
+//     "responseGroup0":
+//         {"categoryName":"Pre ordering",
+//         "answers":["Answer 1","Answer 2"]},
+//     "responseGroup1":
+//         {"categoryName":"Post ordering","answers":["Answer 1","Answer 2","Answer 3"]},
+//     "responseGroup2":
+//         {"categoryName":"Returning","answers":["BLAH","Answer Blah"]}
+//     }
+
+    function buildRepsonseTemplate (answers) {
+        const answersJSON = JSON.parse(answers)
+        for (const {categoryName, answers: answersList} of Object.values(answersJSON)) {
+            $('#answer-collection-1').append($(`<h1>${categoryName}</h1>`));
+            for (const answer of answersList) {
+                $('#answer-collection-1').append($(`<h5>${answer}</h5>`));
+            }
+        }
+    }
+    const userResponseTemplate = $(`
+    <table class="table">
+        <thead class="user-answer-heading">
+            <tr>
+                <th>Your response (Time taken: ${timer})</th>
+            </tr>
+        </thead>
+        <tr>
+            <td class="user-answer">
+                <div class="row prob-text">
+                    <div class="col-sm-10 col-sm-offset-1" id="problem-navigator">
+                        <div class="response-template">
+                           <div class="row" id="answer-collection-1">
+                       
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+    </table>`)
+
+    function answerSuccess(result, problemId, timer, answers ) {
         if (result.response === 'success') {
             console.log('we got there!');
-            $('#answer-collection-1').append($(`<h1>${problemId}</h1>`));
-            // const testtemp = $(`<?php echo $problem["category"]; ?> TEST`)
-            // testtemp.clone().appendTo('#answer-collection-1');                                
+            buildRepsonseTemplate(answers)
+            // $('#answer-collection-1').append($(`<h1>${problemId}</h1>`));                           
         } else {
             console.log('i fucked up');
         }
