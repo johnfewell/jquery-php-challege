@@ -63,9 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<p id="problem-prompt" class="prob-text prob-font-color">
 						<?php echo $problem["prob"]; ?>
 					</p>
-					<p class="small grey" id="problem-source">
-						<?php echo $problem["source"]; ?>
-					</p>
 					<div class="space25"></div>
 
 
